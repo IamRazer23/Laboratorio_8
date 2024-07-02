@@ -16,6 +16,15 @@ public class Becas {
             System.out.println("No se puede agregar más estudiantes. Límite alcanzado.");
         }
     }
+    
+    public Estudiantes buscarPorCedula(String cedula) {
+    	for (Estudiantes estudiante : estudiantes) {
+            if (estudiante.getCedula().equals(cedula)) {
+                return estudiante;
+            }
+    	}
+    	return null;
+    }
 
     public ArrayList<String> obtenerEstudiantesBecados() {
         ArrayList<String> estudiantesBecados = new ArrayList<>();
@@ -29,4 +38,24 @@ public class Becas {
         return estudiantesBecados;
     }
 
+    public ArrayList<String> obtenerBecadosPorCarrera(String carrera) {
+        ArrayList<String> becadosPorCarrera = new ArrayList<>();
+        for (Estudiantes estudiante : estudiantes) {
+            if (estudiante.getIndiceAcademico() >= 2.0 && estudiante.getCarrera().equals(carrera)) {
+                becadosPorCarrera.add(estudiante.getNombre());
+            }
+        }
+        return becadosPorCarrera;
+    }
+
+    public ArrayList<String> obtenerBecadosPorSexo(String sexo) {
+        ArrayList<String> becadosPorSexo = new ArrayList<>();
+        for (Estudiantes estudiante : estudiantes) {
+            if (estudiante.getIndiceAcademico() >= 2.0 && estudiante.getSexo().equals(sexo)) {
+                becadosPorSexo.add(estudiante.getNombre());
+            }
+        }
+        return becadosPorSexo;
+    }
+    
 }

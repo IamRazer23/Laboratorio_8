@@ -30,8 +30,9 @@ public class Formulario extends JFrame {
 	private JTextField textNombre;
 	private JTextField textIndice;
 	private JTextField textCedula;
+	private JComboBox<String> comboBoxCarreras;
+	private JComboBox<String> comboBoxsexo;
 	private Estudiantes estudiante;
-	private JComboBox comboBoxCarreras;
 	
 	 private ArrayList<Estudiantes> estudiantes;
 	/**
@@ -81,13 +82,13 @@ public class Formulario extends JFrame {
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Indice:");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1_1.setBounds(21, 239, 95, 22);
+		lblNewLabel_1_1.setBounds(21, 311, 95, 22);
 		contentPane.add(lblNewLabel_1_1);
 		
 		textIndice = new JTextField();
 		textIndice.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		textIndice.setColumns(10);
-		textIndice.setBounds(141, 240, 153, 19);
+		textIndice.setBounds(141, 312, 153, 19);
 		contentPane.add(textIndice);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("Cédula:");
@@ -101,16 +102,16 @@ public class Formulario extends JFrame {
 		textCedula.setBounds(141, 167, 153, 19);
 		contentPane.add(textCedula);
 		
-		JLabel lblNewLabel_1_1_2 = new JLabel("Carrera:");
+		JLabel lblNewLabel_1_1_2 = new JLabel("Sexo:");
 		lblNewLabel_1_1_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1_1_2.setBounds(21, 308, 95, 22);
+		lblNewLabel_1_1_2.setBounds(21, 239, 95, 22);
 		contentPane.add(lblNewLabel_1_1_2);
 		
-		 comboBoxCarreras = new JComboBox();
-		comboBoxCarreras.setModel(new DefaultComboBoxModel(new String[] {"Ingeniería Civil", "Ingeniería Eléctrica", "Ingeniería Industrial", "Ingeniería en Sistemas", "Ingeniería Mecánica", "Ingeniería Marítima"}));
-		comboBoxCarreras.setBounds(141, 312, 153, 21);
-		comboBoxCarreras.setSelectedIndex(-1);
-		contentPane.add(comboBoxCarreras);
+		 comboBoxsexo = new JComboBox();
+		comboBoxsexo.setModel(new DefaultComboBoxModel(new String[] {"Hombre", "Mujer", "Indefinido", "Otros"}));
+		comboBoxsexo.setBounds(141, 239, 153, 21);
+		comboBoxsexo.setSelectedIndex(-1);
+		contentPane.add(comboBoxsexo);
 		
 		JButton btnGuardar = new JButton("Guardar Datos");
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -119,8 +120,19 @@ public class Formulario extends JFrame {
 		
 		JButton btnReportes = new JButton("Mostrar Reportes");
 		btnReportes.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnReportes.setBounds(700, 361, 184, 34);
+		btnReportes.setBounds(654, 361, 184, 34);
 		contentPane.add(btnReportes);
+		
+		JLabel lblNewLabel_1_1_2_1 = new JLabel("Carrera:");
+		lblNewLabel_1_1_2_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_1_1_2_1.setBounds(21, 374, 95, 22);
+		contentPane.add(lblNewLabel_1_1_2_1);
+		
+		JComboBox comboBoxCarreras = new JComboBox();
+		comboBoxCarreras.setModel(new DefaultComboBoxModel(new String[] {"Ingeniería Civil", "Ingeniería Eléctrica", "Ingeniería Industrial", "Ingeniería en Sistemas", "Ingeniería Mecánica", "Ingeniería Marítima\""}));
+		comboBoxCarreras.setSelectedIndex(-1);
+		comboBoxCarreras.setBounds(141, 374, 153, 21);
+		contentPane.add(comboBoxCarreras);
 		// Agregar ActionListener para el botón "Guardar Datos"
         btnGuardar.addActionListener(new ActionListener() {
             @Override
@@ -129,6 +141,7 @@ public class Formulario extends JFrame {
                 guardarDatos();
             }
         });
+        
         btnReportes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Cierra la ventana actual
@@ -147,6 +160,7 @@ public class Formulario extends JFrame {
             }
         });
 	}
+	
 	 private void guardarDatos() {
 		 try {
 		        // Obtener los datos ingresados por el usuario
@@ -154,9 +168,10 @@ public class Formulario extends JFrame {
 		        String cedula = textCedula.getText();
 		        double indice = Double.parseDouble(textIndice.getText());
 		        String carrera = (String) comboBoxCarreras.getSelectedItem();
+		        String sexo = (String) comboBoxsexo.getSelectedItem();
 
 		       
-		        Estudiantes estudiante = new Estudiantes(nombre, cedula, carrera, indice);
+		        Estudiantes estudiante = new Estudiantes(nombre, cedula, carrera, indice, sexo);
 		        // Impresión en consola
 		        System.out.println("Información del estudiante guardada: " + estudiante.toString());
 		        estudiantes.add(estudiante);
@@ -168,14 +183,14 @@ public class Formulario extends JFrame {
 		        textNombre.setText("");
 		        textCedula.setText("");
 		        textIndice.setText("");
-		        comboBoxCarreras.setSelectedIndex(-1); 
+		        comboBoxCarreras.setSelectedIndex(-1);
+		        comboBoxsexo.setSelectedIndex(-1);
 		    } catch (NumberFormatException e) {
 		     
 		        JOptionPane.showMessageDialog(this, "Por favor, ingrese datos válidos para Índice.", "Error", JOptionPane.ERROR_MESSAGE);
-		    }
+		    } catch (IllegalArgumentException e) {
+	            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+	        }
+		 
 		}
-	 
-
-	 
-	 
 }

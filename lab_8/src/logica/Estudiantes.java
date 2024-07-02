@@ -29,6 +29,14 @@ public class Estudiantes {
         return nombre;
     }
     
+    public String getCedula() {
+        return cedula;
+    }
+
+    public String getCarrera() {
+        return carrera;
+    }
+
     public String getSexo() {
         return sexo;
     }

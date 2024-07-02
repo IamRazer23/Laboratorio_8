@@ -16,6 +16,9 @@ import java.util.ArrayList;
 
 import javax.swing.JList;
 import javax.swing.JTextArea;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Reportes extends JFrame {
 	private JTextArea textAreaBecados;
@@ -46,7 +49,6 @@ public class Reportes extends JFrame {
 		setBounds(100, 100, 666, 483);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -64,7 +66,19 @@ public class Reportes extends JFrame {
 		textAreaBecados.setEditable(false);
 		textAreaBecados.setBounds(52, 151, 184, 220);
 		contentPane.add(textAreaBecados);
-
+		
+		JLabel lblNewLabel_2 = new JLabel("Filtro:");
+		lblNewLabel_2.setBounds(246, 156, 46, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		JButton btnNewButton = new JButton("Carreras");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.setBounds(256, 188, 89, 23);
+		contentPane.add(btnNewButton);
+		
 		
 	}
 	void mostrarBecados(Becas becas) {
