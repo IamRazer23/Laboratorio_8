@@ -132,6 +132,10 @@ public class Formulario extends JFrame {
 	        comboBoxCarreras.setSelectedIndex(-1);
 	        comboBoxCarreras.setBounds(141, 371, 153, 21);
 	        contentPane.add(comboBoxCarreras);
+	        
+	        JLabel lblNewLabel_2 = new JLabel("Hecho por: Juan Botacio , Abigail Koo, Octavio Frauca y Maria Quiñones");
+	        lblNewLabel_2.setBounds(254, 488, 385, 14);
+	        contentPane.add(lblNewLabel_2);
 
 		// Agregar ActionListener para el botón "Guardar Datos"
         btnGuardar.addActionListener(new ActionListener() {
