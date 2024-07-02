@@ -32,7 +32,6 @@ public class Formulario extends JFrame {
 	private JTextField textCedula;
 	private JComboBox<String> comboBoxCarreras;
 	private JComboBox<String> comboBoxsexo;
-	private Estudiantes estudiante;
 	
 	 private ArrayList<Estudiantes> estudiantes;
 	/**
@@ -60,7 +59,6 @@ public class Formulario extends JFrame {
 		setBounds(100, 100, 932, 552);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		 
@@ -107,11 +105,12 @@ public class Formulario extends JFrame {
 		lblNewLabel_1_1_2.setBounds(21, 239, 95, 22);
 		contentPane.add(lblNewLabel_1_1_2);
 		
-		 comboBoxsexo = new JComboBox();
-		comboBoxsexo.setModel(new DefaultComboBoxModel(new String[] {"Hombre", "Mujer", "Indefinido", "Otros"}));
-		comboBoxsexo.setBounds(141, 239, 153, 21);
-		comboBoxsexo.setSelectedIndex(-1);
-		contentPane.add(comboBoxsexo);
+		comboBoxsexo = new JComboBox<>();
+        comboBoxsexo.setModel(new DefaultComboBoxModel<>(new String[]{"Hombre", "Mujer", "Indefinido", "Otros"}));
+        comboBoxsexo.setBounds(141, 239, 153, 21);
+        comboBoxsexo.setSelectedIndex(-1);
+        contentPane.add(comboBoxsexo);
+
 		
 		JButton btnGuardar = new JButton("Guardar Datos");
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -128,11 +127,12 @@ public class Formulario extends JFrame {
 		lblNewLabel_1_1_2_1.setBounds(21, 374, 95, 22);
 		contentPane.add(lblNewLabel_1_1_2_1);
 		
-		JComboBox comboBoxCarreras = new JComboBox();
-		comboBoxCarreras.setModel(new DefaultComboBoxModel(new String[] {"Ingeniería Civil", "Ingeniería Eléctrica", "Ingeniería Industrial", "Ingeniería en Sistemas", "Ingeniería Mecánica", "Ingeniería Marítima\""}));
-		comboBoxCarreras.setSelectedIndex(-1);
-		comboBoxCarreras.setBounds(141, 374, 153, 21);
-		contentPane.add(comboBoxCarreras);
+		 comboBoxCarreras = new JComboBox<>();
+	        comboBoxCarreras.setModel(new DefaultComboBoxModel<>(new String[]{"Ingeniería Civil", "Ingeniería Eléctrica", "Ingeniería Industrial", "Ingeniería en Sistemas", "Ingeniería Mecánica", "Ingeniería Marítima"}));
+	        comboBoxCarreras.setSelectedIndex(-1);
+	        comboBoxCarreras.setBounds(141, 371, 153, 21);
+	        contentPane.add(comboBoxCarreras);
+
 		// Agregar ActionListener para el botón "Guardar Datos"
         btnGuardar.addActionListener(new ActionListener() {
             @Override

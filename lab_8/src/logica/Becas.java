@@ -58,4 +58,8 @@ public class Becas {
         return becadosPorSexo;
     }
     
+    public ArrayList<Estudiantes> getEstudiantes() {
+        return estudiantes;
+    }
+    
 }
